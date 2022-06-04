@@ -4,8 +4,16 @@ from infoManager import InfoManager
 
 im = InfoManager()
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(('192.168.1.87', 17000))
+
+ip = input("Inserisci indirizzo ip del server : ")
+porta = int(input("Inserisci porta alla quale collegarsi : "))
+conferma = input(f"Dati inseriti : \n Ip = {ip} \n Porta = {porta} \nCorretto? s/n  ")
+if conferma == "s":
+    HOST = ip
+    PORT = porta
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((HOST, PORT))
+
 
 def send(msg):
 

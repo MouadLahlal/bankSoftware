@@ -10,13 +10,11 @@ from publicUser import PublicUser
 im = InfoManager()
 User.main()
 
-HOST = '192.168.1.87'
-PORT = 17000
+HOST = None
+PORT = None
 spegniServer = False
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind((HOST, PORT))
-s.listen(5)
+s = None
 
 
 def receive(clientsocket):
@@ -159,4 +157,14 @@ def main():
 
 
 if __name__ == "__main__":
+    ip = input("Inserisci indirizzo ip della macchina : ")
+    porta = int(input("Inserisci porta sulla quale eseguire il servizio : "))
+    conferma = input(f"Dati inseriti : \n Ip = {ip} \n Porta = {porta} \nCorretto? s/n ")
+    if conferma == "s":
+        HOST = ip
+        PORT = porta
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.bind((HOST, PORT))
+        s.listen(5)
+
     main()

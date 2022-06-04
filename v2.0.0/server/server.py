@@ -176,6 +176,7 @@ def login():
 
 if __name__ == "__main__":
     global c
+
     t1 = Thread(target=login, daemon=True)
     t1.start()
     c = input("Fermare ? ")
